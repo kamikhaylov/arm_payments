@@ -14,6 +14,10 @@ import java.sql.Types;
 import java.util.List;
 import java.util.Properties;
 
+/**
+ * Реализация сервиса получения списка платежей из БД
+ * Таблица payments
+ */
 @AllArgsConstructor
 public class PaymentListDaoImpl implements PaymentListDao {
 

@@ -1,4 +1,4 @@
-package ru.payments.arm.configuration;
+package ru.payments.arm.configuration.service;
 
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
@@ -12,10 +12,10 @@ import ru.payments.arm.service.PaymentListService;
 import ru.payments.arm.service.context.PaymentListContext;
 
 /**
- * Конфигурация сервисов
+ * Конфигурация сервиса получения списка платежей
  */
 @Configuration
-public class ServiceConfiguration {
+public class PaymentListServiceConfiguration {
 
     @Bean
     public PaymentListService paymentListService(

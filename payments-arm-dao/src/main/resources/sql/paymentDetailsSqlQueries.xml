@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+
+    <entry key="findPaymentDetails">
+        <![CDATA[
+            select
+                payments.payment_id,
+                payments.client_id,
+                payments.creation_date,
+                payments.amount,
+                payments.currency,
+                payments.organization,
+                payments.type,
+                types.description
+            from payments
+                inner join payment_types types on payments.type = types.type
+            where payments.payment_id = :paymentId
+            fetch first 1 rows only
+        ]]>
+    </entry>
+
+</properties>

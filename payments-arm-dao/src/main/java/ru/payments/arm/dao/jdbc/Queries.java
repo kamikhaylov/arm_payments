@@ -7,7 +7,8 @@ import lombok.Getter;
 @Getter
 public enum Queries {
 
-    FIND_PAYMENT_LIST("findPaymentList");
+    FIND_PAYMENT_LIST("findPaymentList"),
+    FIND_PAYMENT_DETAILS("findPaymentDetails");
 
     private final String sqlKey;
 }

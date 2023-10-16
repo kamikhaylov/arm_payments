@@ -7,11 +7,11 @@ import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 /**
- * Представление данных таблицы payments в DTO списка платежей.
+ * Представление данных таблицы payments в DTO для детальной информации платежа.
  */
 @Data
 @ToString
-public class PaymentListDaoDto {
+public class PaymentDetailsDaoDto {
 
     /** Идентификатор платежа */
     private String paymentId;

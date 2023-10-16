@@ -1,4 +1,4 @@
-package ru.payments.arm.dao.dto;
+package ru.payments.arm.dto.response;
 
 import lombok.Data;
 import lombok.ToString;
@@ -7,11 +7,11 @@ import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 /**
- * Представление данных таблицы payments в DTO списка платежей.
+ * Ответ для сервиса получения детальной информации платежа
  */
 @Data
 @ToString
-public class PaymentListDaoDto {
+public class PaymentDetailsResponse {
 
     /** Идентификатор платежа */
     private String paymentId;
