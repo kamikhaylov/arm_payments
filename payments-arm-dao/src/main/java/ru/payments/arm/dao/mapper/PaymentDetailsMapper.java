@@ -22,6 +22,7 @@ public class PaymentDetailsMapper implements RowMapper<PaymentDetailsDaoDto> {
         payment.setCurrency(rs.getString(PaymentModel.CURRENCY.name()));
         payment.setOrganization(rs.getString(PaymentModel.ORGANIZATION.name()));
         payment.setType(rs.getString(PaymentModel.TYPE.name()));
+        payment.setTypeDescription(rs.getString(PaymentModel.TYPE_DESCRIPTION.name()));
         payment.setDescription(rs.getString(PaymentModel.DESCRIPTION.name()));
         return payment;
     }

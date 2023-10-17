@@ -32,6 +32,8 @@ public class PaymentDetailsResponseMapper implements Mapper<PaymentDetailsDaoDto
                 .addMappings(
                         mapper -> mapper.map(PaymentDetailsDaoDto::getType, PaymentDetailsResponse::setType))
                 .addMappings(
+                        mapper -> mapper.map(PaymentDetailsDaoDto::getTypeDescription, PaymentDetailsResponse::setTypeDescription))
+                .addMappings(
                         mapper -> mapper.map(PaymentDetailsDaoDto::getDescription, PaymentDetailsResponse::setDescription));
     }
 

@@ -1,7 +1,9 @@
 package ru.payments.arm.mapper;
 
 import org.modelmapper.ModelMapper;
+import ru.payments.arm.dao.dto.PaymentDetailsDaoDto;
 import ru.payments.arm.dao.dto.PaymentListDaoDto;
+import ru.payments.arm.dto.response.PaymentDetailsResponse;
 import ru.payments.arm.dto.response.PaymentListResponse;
 
 /**
@@ -29,6 +31,8 @@ public class PaymentListResponseMapper implements Mapper<PaymentListDaoDto, Paym
                         mapper -> mapper.map(PaymentListDaoDto::getOrganization, PaymentListResponse::setOrganization))
                 .addMappings(
                         mapper -> mapper.map(PaymentListDaoDto::getType, PaymentListResponse::setType))
+                .addMappings(
+                        mapper -> mapper.map(PaymentListDaoDto::getTypeDescription, PaymentListResponse::setTypeDescription))
                 .addMappings(
                         mapper -> mapper.map(PaymentListDaoDto::getDescription, PaymentListResponse::setDescription));
     }

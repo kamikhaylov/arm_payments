@@ -34,6 +34,9 @@ public class PaymentListResponse {
     /** Тип платежа */
     private String type;
 
+    /** Описание типа платежа */
+    private String typeDescription;
+
     /** Описание платежа */
     private String description;
 }

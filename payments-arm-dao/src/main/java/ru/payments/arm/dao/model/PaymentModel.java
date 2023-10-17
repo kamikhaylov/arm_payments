@@ -17,6 +17,7 @@ public enum PaymentModel {
     CURRENCY("currency"),
     ORGANIZATION("organization"),
     TYPE("type"),
+    TYPE_DESCRIPTION("typeDescription"),
     DESCRIPTION("description");
 
     private final String parameterName;

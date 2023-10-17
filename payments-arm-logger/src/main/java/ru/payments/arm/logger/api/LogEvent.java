@@ -1,0 +1,19 @@
+package ru.payments.arm.logger.api;
+
+/**
+ * Информация о логируемом событие.
+ */
+public interface LogEvent {
+
+    /**
+     * Код события.
+     * @return код события
+     */
+    String getCode();
+
+    /**
+     * Заголовок.
+     * @return заголовок события
+     */
+    String getTitle();
+}

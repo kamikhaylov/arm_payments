@@ -15,6 +15,7 @@
         <module>payments-arm-dto</module>
         <module>payments-arm-dao</module>
         <module>payments-arm</module>
+        <module>payments-arm-logger</module>
     </modules>
 
     <groupId>ru.payments.arm</groupId>
