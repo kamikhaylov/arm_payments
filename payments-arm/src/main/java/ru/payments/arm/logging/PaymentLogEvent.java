@@ -7,7 +7,12 @@ import ru.payments.arm.logger.api.LogEvent;
  */
 public enum PaymentLogEvent implements LogEvent {
 
-    PAYMENT1000("Вызов сервиса получения списка платежей");
+    PAYMENT0001("Вызов сервиса получения списка платежей"),
+    PAYMENT0002("Успешный ответ от сервиса получения списка платежей"),
+    PAYMENT0003("Ошибка в ответе сервиса получения списка платежей"),
+    PAYMENT0004("Вызов сервиса получения детальной информации платежа"),
+    PAYMENT0005("Успешный ответ от сервиса получения детальной информации платежа"),
+    PAYMENT0006("Ошибка в ответе сервиса получения детальной информации платежа");
 
     private final String title;
 
@@ -27,6 +32,6 @@ public enum PaymentLogEvent implements LogEvent {
 
     @Override
     public String toString() {
-        return getCode() + "." + getTitle();
+        return getCode() + ". " + getTitle();
     }
 }

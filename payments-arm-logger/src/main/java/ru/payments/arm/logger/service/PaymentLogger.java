@@ -13,6 +13,7 @@ import java.time.LocalDateTime;
 public class PaymentLogger<T extends LogEvent> {
     private static final String INFO = "INFO";
     private static final String ERROR = "ERROR";
+    private static final String POINT = ". ";
 
     private final Logger logger;
     private final LoggerService loggerService;
@@ -38,6 +39,21 @@ public class PaymentLogger<T extends LogEvent> {
     }
 
     /**
+     * Логирует события уровня INFO.
+     */
+    public void info(T event, String parameters) {
+        if (logger.isInfoEnabled()) {
+            try {
+                logger.info(event.toString() + POINT + parameters);
+                loggerService.add(new LogModel(INFO, LocalDateTime.now(),
+                        event.toString(), parameters, logger.getName()));
+            } catch (Exception exc) {
+                error(event, exc);
+            }
+        }
+    }
+
+    /**
      * Логирует события уровня ERROR.
      */
     public void error(T event, Throwable throwable) {
@@ -49,9 +65,9 @@ public class PaymentLogger<T extends LogEvent> {
     /**
      * Логирует события уровня ERROR.
      */
-    public void error(T event, Throwable throwable, String parameter) {
-        logger.error(event.toString(), throwable);
+    public void error(T event, Throwable throwable, String parameters) {
+        logger.error(event.toString() + POINT + parameters, throwable);
         loggerService.add(new LogModel(ERROR, LocalDateTime.now(),
-                event.toString(), parameter, logger.getName(), ExceptionUtils.getStackTrace(throwable)));
+                event.toString(), parameters, logger.getName(), ExceptionUtils.getStackTrace(throwable)));
     }
 }
