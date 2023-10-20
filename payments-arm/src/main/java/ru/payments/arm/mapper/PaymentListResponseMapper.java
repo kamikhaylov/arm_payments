@@ -1,9 +1,7 @@
 package ru.payments.arm.mapper;
 
 import org.modelmapper.ModelMapper;
-import ru.payments.arm.dao.dto.PaymentDetailsDaoDto;
 import ru.payments.arm.dao.dto.PaymentListDaoDto;
-import ru.payments.arm.dto.response.PaymentDetailsResponse;
 import ru.payments.arm.dto.response.PaymentListResponse;
 
 /**

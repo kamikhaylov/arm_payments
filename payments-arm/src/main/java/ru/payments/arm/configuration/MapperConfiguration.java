@@ -7,10 +7,13 @@ import ru.payments.arm.dao.dto.PaymentDetailsDaoDto;
 import ru.payments.arm.dao.dto.PaymentListDaoDto;
 import ru.payments.arm.dto.response.PaymentDetailsResponse;
 import ru.payments.arm.dto.response.PaymentListResponse;
+import ru.payments.arm.dto.response.SystemJournalResponse;
+import ru.payments.arm.logger.model.LogModel;
 import ru.payments.arm.mapper.Mapper;
 import ru.payments.arm.mapper.PaymentDetailsResponseMapper;
 import ru.payments.arm.mapper.PaymentListRequestMapper;
 import ru.payments.arm.mapper.PaymentListResponseMapper;
+import ru.payments.arm.mapper.SystemJournalResponseMapper;
 import ru.payments.arm.service.context.PaymentListContext;
 
 /**
@@ -32,5 +35,10 @@ public class MapperConfiguration {
     @Bean
     public Mapper<PaymentDetailsDaoDto, PaymentDetailsResponse> paymentDetailsResponseMapper() {
         return new PaymentDetailsResponseMapper();
+    }
+
+    @Bean
+    public Mapper<LogModel, SystemJournalResponse> systemJournalResponseMapper() {
+        return new SystemJournalResponseMapper();
     }
 }
