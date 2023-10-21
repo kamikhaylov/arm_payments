@@ -48,22 +48,6 @@ public class LogModel {
     /** Трассировка */
     private String trace;
 
-    public LogModel(int id,
-                    String level,
-                    LocalDateTime created,
-                    String message,
-                    String parameters,
-                    String className,
-                    String trace) {
-        this.id = id;
-        this.level = level;
-        this.created = created;
-        this.message = message;
-        this.parameters = parameters;
-        this.className = className;
-        this.trace = trace;
-    }
-
     public LogModel(String level,
                     LocalDateTime created,
                     String message,

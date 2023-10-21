@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 import ru.payments.arm.dto.request.PaymentListRequest;
 import ru.payments.arm.dto.response.PaymentListResponse;
 import ru.payments.arm.logging.RestPaymentLogged;
+import ru.payments.arm.monitoring.PaymentMonitored;
 import ru.payments.arm.service.PaymentListService;
 import ru.payments.arm.service.context.PaymentListContext;
 
@@ -18,6 +19,7 @@ import java.util.List;
 import static ru.payments.arm.logging.PaymentLogEvent.PAYMENT0001;
 import static ru.payments.arm.logging.PaymentLogEvent.PAYMENT0002;
 import static ru.payments.arm.logging.PaymentLogEvent.PAYMENT0003;
+import static ru.payments.arm.monitoring.PaymentMonitoringPoint.PAYMENT_LIST_FIND;
 
 /**
  * Контроллер для сервиса получения списка платежей клиента
@@ -31,6 +33,7 @@ public class PaymentListController {
 
     @PostMapping("/payment/list/find")
     @RestPaymentLogged(start = PAYMENT0001, success = PAYMENT0002, fail = PAYMENT0003)
+    @PaymentMonitored(PAYMENT_LIST_FIND)
     public ResponseEntity<List<PaymentListResponse>> getPayments(@RequestBody PaymentListRequest request) {
         PaymentListContext context = new PaymentListContext();
         context.setRequest(request);

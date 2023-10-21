@@ -10,11 +10,13 @@ import org.springframework.web.bind.annotation.RestController;
 import ru.payments.arm.dto.request.PaymentDetailsRequest;
 import ru.payments.arm.dto.response.PaymentDetailsResponse;
 import ru.payments.arm.logging.RestPaymentLogged;
+import ru.payments.arm.monitoring.PaymentMonitored;
 import ru.payments.arm.service.PaymentDetailsService;
 
 import static ru.payments.arm.logging.PaymentLogEvent.PAYMENT0004;
 import static ru.payments.arm.logging.PaymentLogEvent.PAYMENT0005;
 import static ru.payments.arm.logging.PaymentLogEvent.PAYMENT0006;
+import static ru.payments.arm.monitoring.PaymentMonitoringPoint.PAYMENT_DETAILS_FIND;
 
 /**
  * Контроллер для сервиса получения детальной информации платежа клиента
@@ -28,6 +30,7 @@ public class PaymentDetailsController {
 
     @PostMapping("/payment/details/get")
     @RestPaymentLogged(start = PAYMENT0004, success = PAYMENT0005, fail = PAYMENT0006)
+    @PaymentMonitored(PAYMENT_DETAILS_FIND)
     public ResponseEntity<PaymentDetailsResponse> getPayment(@RequestBody PaymentDetailsRequest request) {
         PaymentDetailsResponse response = service.getPaymentDetails(request);
         return new ResponseEntity<>(response, HttpStatus.FOUND);
