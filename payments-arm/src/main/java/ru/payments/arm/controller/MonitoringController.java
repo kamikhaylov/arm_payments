@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import ru.payments.arm.dto.request.MonitoringRequest;
+import ru.payments.arm.dto.response.ArmResponse;
 import ru.payments.arm.dto.response.MonitoringResponse;
 import ru.payments.arm.logging.RestPaymentLogged;
 import ru.payments.arm.monitoring.PaymentMonitored;
@@ -33,8 +34,8 @@ public class MonitoringController {
     @PostMapping("/monitoring/metrics/find")
     @RestPaymentLogged(start = PAYMENT0010, success = PAYMENT0011, fail = PAYMENT0012)
     @PaymentMonitored(MONITORING_METRICS_FIND)
-    public ResponseEntity<List<MonitoringResponse>> getMonitoringMetrics(@RequestBody MonitoringRequest request) {
-        List<MonitoringResponse> response = service.getMonitoringMetrics(request);
+    public ResponseEntity<ArmResponse<List<MonitoringResponse>>> getMonitoringMetrics(@RequestBody MonitoringRequest request) {
+        ArmResponse<List<MonitoringResponse>> response = new ArmResponse<>(service.getMonitoringMetrics(request));
         return new ResponseEntity<>(response, HttpStatus.FOUND);
     }
 }

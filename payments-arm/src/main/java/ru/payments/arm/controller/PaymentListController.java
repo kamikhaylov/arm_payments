@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import ru.payments.arm.dto.request.PaymentListRequest;
+import ru.payments.arm.dto.response.ArmResponse;
 import ru.payments.arm.dto.response.PaymentListResponse;
 import ru.payments.arm.logging.RestPaymentLogged;
 import ru.payments.arm.monitoring.PaymentMonitored;
@@ -34,10 +35,10 @@ public class PaymentListController {
     @PostMapping("/payment/list/find")
     @RestPaymentLogged(start = PAYMENT0001, success = PAYMENT0002, fail = PAYMENT0003)
     @PaymentMonitored(PAYMENT_LIST_FIND)
-    public ResponseEntity<List<PaymentListResponse>> getPayments(@RequestBody PaymentListRequest request) {
+    public ResponseEntity<ArmResponse<List<PaymentListResponse>>> getPayments(@RequestBody PaymentListRequest request) {
         PaymentListContext context = new PaymentListContext();
         context.setRequest(request);
-        List<PaymentListResponse> response = service.getPaymentList(context);
+        ArmResponse<List<PaymentListResponse>> response = new ArmResponse<>(service.getPaymentList(context));
         return new ResponseEntity<>(response, HttpStatus.FOUND);
     }
 }

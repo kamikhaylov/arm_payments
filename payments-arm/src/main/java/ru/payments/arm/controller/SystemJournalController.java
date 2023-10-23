@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import ru.payments.arm.dto.request.SystemJournalRequest;
+import ru.payments.arm.dto.response.ArmResponse;
 import ru.payments.arm.dto.response.SystemJournalResponse;
 import ru.payments.arm.logging.RestPaymentLogged;
 import ru.payments.arm.monitoring.PaymentMonitored;
@@ -33,8 +34,8 @@ public class SystemJournalController {
     @PostMapping("/logger/systemJournal/find")
     @RestPaymentLogged(start = PAYMENT0007, success = PAYMENT0008, fail = PAYMENT0009)
     @PaymentMonitored(SYSTEM_JOURNAL_FIND)
-    public ResponseEntity<List<SystemJournalResponse>> getSystemJournal(@RequestBody SystemJournalRequest request) {
-        List<SystemJournalResponse> response = service.getSystemJournal(request);
+    public ResponseEntity<ArmResponse<List<SystemJournalResponse>>> getSystemJournal(@RequestBody SystemJournalRequest request) {
+        ArmResponse<List<SystemJournalResponse>> response = new ArmResponse<>(service.getSystemJournal(request));
         return new ResponseEntity<>(response, HttpStatus.FOUND);
     }
 }
