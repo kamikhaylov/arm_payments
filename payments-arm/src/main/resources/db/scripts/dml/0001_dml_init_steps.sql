@@ -10,5 +10,5 @@ insert into payment_types (type, description) values ('customsDuty', 'Тамож
 
 -- changeset konstantin:0001_dml_initial_steps_#0002 logicalFilePath:path-independent runOnChange:true splitStatements:true endDelimiter:/
 insert into payments (payment_id, client_id, creation_date, amount, currency, organization, type, description)
-values ('70000010', '100000900', current_date, 1000, 'RUB', 'OOO MOBILE', 'mobilePayment', 'Ежемесячная оплата за мобильную связь');
+values ('b6922c12-56d0-496d-9e4b-76f63f68a165', '100000900', current_date, 1000, 'RUB', 'OOO MOBILE', 'mobilePayment', 'Ежемесячная оплата за мобильную связь');
 /

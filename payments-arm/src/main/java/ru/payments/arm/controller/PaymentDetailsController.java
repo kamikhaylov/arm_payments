@@ -13,6 +13,7 @@ import ru.payments.arm.dto.response.PaymentDetailsResponse;
 import ru.payments.arm.logging.RestPaymentLogged;
 import ru.payments.arm.monitoring.PaymentMonitored;
 import ru.payments.arm.service.PaymentDetailsService;
+import ru.payments.arm.validation.Validator;
 
 import static ru.payments.arm.logging.PaymentLogEvent.PAYMENT0004;
 import static ru.payments.arm.logging.PaymentLogEvent.PAYMENT0005;
@@ -28,11 +29,13 @@ import static ru.payments.arm.monitoring.PaymentMonitoringPoint.PAYMENT_DETAILS_
 public class PaymentDetailsController {
 
     private PaymentDetailsService service;
+    private Validator<PaymentDetailsRequest> paymentDetailsRequestValidator;
 
     @PostMapping("/payment/details/get")
     @RestPaymentLogged(start = PAYMENT0004, success = PAYMENT0005, fail = PAYMENT0006)
     @PaymentMonitored(PAYMENT_DETAILS_FIND)
     public ResponseEntity<ArmResponse<PaymentDetailsResponse>> getPayment(@RequestBody PaymentDetailsRequest request) {
+        paymentDetailsRequestValidator.validateAndThrow(request);
         ArmResponse<PaymentDetailsResponse> response = new ArmResponse<>(service.getPaymentDetails(request));
         return new ResponseEntity<>(response, HttpStatus.FOUND);
     }
