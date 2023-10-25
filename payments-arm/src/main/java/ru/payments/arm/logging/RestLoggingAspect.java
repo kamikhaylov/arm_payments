@@ -11,11 +11,13 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 import ru.payments.arm.dto.response.ArmMessage;
 import ru.payments.arm.dto.response.ArmResponse;
+import ru.payments.arm.exception.PaymentException;
 import ru.payments.arm.exception.PaymentValidationException;
 import ru.payments.arm.logger.api.LogEvent;
 import ru.payments.arm.logger.service.LoggerService;
 import ru.payments.arm.logger.service.PaymentLogger;
 import ru.payments.arm.logger.service.PaymentLoggerFactory;
+import ru.payments.arm.parameters.exception.ParameterException;
 
 import java.util.Arrays;
 
@@ -41,18 +43,29 @@ public class RestLoggingAspect {
     public Object call(ProceedingJoinPoint jp, RestPaymentLogged logged) throws Throwable {
         Object response;
         String parameters = Arrays.toString(jp.getArgs());
+
         try {
             logger.info(logged.start(), parameters);
             response = jp.proceed();
             logger.info(logged.success(), response.toString());
+            return response;
+
         } catch (PaymentValidationException exc) {
             logger.error(exc.getLogEvent(), exc, parameters);
             return new ResponseEntity<>(createResponse(exc), HttpStatus.BAD_REQUEST);
+
+        } catch (ParameterException exc) {
+            logger.error(exc.getLogEvent(), exc, parameters);
+            return new ResponseEntity<>(createResponse(exc.getLogEvent()), HttpStatus.BAD_REQUEST);
+
+        } catch (PaymentException exc) {
+            logger.error(exc.getLogEvent(), exc, parameters);
+            return new ResponseEntity<>(createResponse(exc.getLogEvent()), HttpStatus.BAD_REQUEST);
+
         } catch (Exception exc) {
             logger.error(logged.fail(), exc, parameters);
             return new ResponseEntity<>(createResponse(logged.fail()), HttpStatus.BAD_REQUEST);
         }
-        return response;
     }
 
     private ArmResponse<?> createResponse(LogEvent event) {

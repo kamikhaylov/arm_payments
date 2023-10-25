@@ -17,6 +17,7 @@
         <module>payments-arm</module>
         <module>payments-arm-logger</module>
         <module>payments-arm-monitoring</module>
+        <module>payments-arm-parameters</module>
     </modules>
 
     <groupId>ru.payments.arm</groupId>

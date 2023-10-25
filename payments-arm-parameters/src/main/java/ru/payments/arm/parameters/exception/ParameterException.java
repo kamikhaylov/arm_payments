@@ -1,17 +1,17 @@
-package ru.payments.arm.exception;
+package ru.payments.arm.parameters.exception;
 
 import lombok.Getter;
 import ru.payments.arm.logger.api.LogEvent;
 
 @Getter
-public class PaymentValidationException extends RuntimeException {
+public class ParameterException extends RuntimeException {
 
-    private static final String FORMAT = "%s. Параметры, не прошедшие валидацию: %s";
+    private static final String FORMAT = "%s. Не найденный параметр: %s";
 
     private LogEvent logEvent;
     private String arg;
 
-    public PaymentValidationException(LogEvent logEvent, String arg) {
+    public ParameterException(LogEvent logEvent, String arg) {
         super(formatMessage(logEvent, arg));
         this.logEvent = logEvent;
         this.arg = arg;
