@@ -11,7 +11,7 @@ public class ValidatorContainer {
 
     public void addError(String key, Object value) {
         if (!errors.contains(key)) {
-            errors.add(key + ": " + value.toString());
+            errors.add(key + ": " + value);
         }
     }
 

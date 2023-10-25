@@ -7,11 +7,16 @@ import ru.payments.arm.logger.api.LogEvent;
 import java.util.Arrays;
 import java.util.function.Predicate;
 
+import static org.apache.commons.lang3.StringUtils.isNotBlank;
+
 /**
  * Базовый класс валидатора объектов
  */
 @AllArgsConstructor
 public abstract class AbstractValidator<T> implements Validator<T> {
+
+    protected static final String PAYMENT_ID_REGEX = "^[A-z0-9-]{36}$";
+    protected static final Predicate<String> CHECK_ID = x -> isNotBlank(x) && x.matches(PAYMENT_ID_REGEX);
 
     private final LogEvent logEvent;
 

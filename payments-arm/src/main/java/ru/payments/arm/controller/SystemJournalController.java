@@ -13,6 +13,7 @@ import ru.payments.arm.dto.response.SystemJournalResponse;
 import ru.payments.arm.logging.RestPaymentLogged;
 import ru.payments.arm.monitoring.PaymentMonitored;
 import ru.payments.arm.service.SystemJournalService;
+import ru.payments.arm.validation.Validator;
 
 import java.util.List;
 
@@ -30,11 +31,13 @@ import static ru.payments.arm.monitoring.PaymentMonitoringPoint.SYSTEM_JOURNAL_F
 public class SystemJournalController {
 
     private SystemJournalService service;
+    private Validator<SystemJournalRequest> systemJournalRequestValidator;
 
     @PostMapping("/logger/systemJournal/find")
     @RestPaymentLogged(start = PAYMENT0007, success = PAYMENT0008, fail = PAYMENT0009)
     @PaymentMonitored(SYSTEM_JOURNAL_FIND)
     public ResponseEntity<ArmResponse<List<SystemJournalResponse>>> getSystemJournal(@RequestBody SystemJournalRequest request) {
+        systemJournalRequestValidator.validateAndThrow(request);
         ArmResponse<List<SystemJournalResponse>> response = new ArmResponse<>(service.getSystemJournal(request));
         return new ResponseEntity<>(response, HttpStatus.FOUND);
     }

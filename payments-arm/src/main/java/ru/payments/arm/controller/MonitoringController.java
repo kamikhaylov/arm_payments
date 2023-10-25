@@ -13,6 +13,7 @@ import ru.payments.arm.dto.response.MonitoringResponse;
 import ru.payments.arm.logging.RestPaymentLogged;
 import ru.payments.arm.monitoring.PaymentMonitored;
 import ru.payments.arm.service.PaymentMonitoringService;
+import ru.payments.arm.validation.Validator;
 
 import java.util.List;
 
@@ -30,11 +31,13 @@ import static ru.payments.arm.monitoring.PaymentMonitoringPoint.MONITORING_METRI
 public class MonitoringController {
 
     private PaymentMonitoringService service;
+    private Validator<MonitoringRequest> monitoringRequestValidator;
 
     @PostMapping("/monitoring/metrics/find")
     @RestPaymentLogged(start = PAYMENT0010, success = PAYMENT0011, fail = PAYMENT0012)
     @PaymentMonitored(MONITORING_METRICS_FIND)
     public ResponseEntity<ArmResponse<List<MonitoringResponse>>> getMonitoringMetrics(@RequestBody MonitoringRequest request) {
+        monitoringRequestValidator.validateAndThrow(request);
         ArmResponse<List<MonitoringResponse>> response = new ArmResponse<>(service.getMonitoringMetrics(request));
         return new ResponseEntity<>(response, HttpStatus.FOUND);
     }
