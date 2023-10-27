@@ -8,7 +8,6 @@ import ru.payments.arm.dao.context.PaymentListDaoContext;
 import ru.payments.arm.dao.dto.PaymentListDaoDto;
 import ru.payments.arm.dto.response.PaymentListResponse;
 import ru.payments.arm.mapper.Mapper;
-import ru.payments.arm.parameters.ParametersService;
 import ru.payments.arm.service.PaymentListService;
 import ru.payments.arm.service.context.PaymentListContext;
 
@@ -22,12 +21,10 @@ public class PaymentListServiceConfiguration {
     public PaymentListService paymentListService(
             @Qualifier("paymentListDao") PaymentListDao paymentListDao,
             @Qualifier("paymentListRequestMapper") Mapper<PaymentListContext, PaymentListDaoContext> paymentListRequestMapper,
-            @Qualifier("paymentListResponseMapper") Mapper<PaymentListDaoDto, PaymentListResponse> paymentListResponseMapper,
-            @Qualifier("parameterService") ParametersService parameterService) {
+            @Qualifier("paymentListResponseMapper") Mapper<PaymentListDaoDto, PaymentListResponse> paymentListResponseMapper) {
         return new PaymentListService(
                 paymentListDao,
                 paymentListRequestMapper,
-                paymentListResponseMapper,
-                parameterService);
+                paymentListResponseMapper);
     }
 }

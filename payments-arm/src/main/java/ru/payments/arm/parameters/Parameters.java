@@ -10,7 +10,10 @@ import lombok.Getter;
 @Getter
 public enum Parameters {
 
-    LIST_SERVICE_ENABLED("payment.list.service.enabled");
+    LIST_SERVICE_ENABLED("payment.list.service.enabled"),
+    DETAILS_SERVICE_ENABLED("payment.details.service.enabled"),
+    MONITORING_SERVICE_ENABLED("payment.monitoring.service.enabled"),
+    SYSTEM_JOURNAL_SERVICE_ENABLED("payment.systemJournal.service.enabled");
 
-    private final String parameter;
+    private final String name;
 }

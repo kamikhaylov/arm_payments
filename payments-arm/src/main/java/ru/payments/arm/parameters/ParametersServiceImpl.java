@@ -3,7 +3,10 @@ package ru.payments.arm.parameters;
 import lombok.AllArgsConstructor;
 import ru.payments.arm.parameters.api.ParametersApi;
 
+import static ru.payments.arm.parameters.Parameters.DETAILS_SERVICE_ENABLED;
 import static ru.payments.arm.parameters.Parameters.LIST_SERVICE_ENABLED;
+import static ru.payments.arm.parameters.Parameters.MONITORING_SERVICE_ENABLED;
+import static ru.payments.arm.parameters.Parameters.SYSTEM_JOURNAL_SERVICE_ENABLED;
 
 /**
  * Реализация сервиса управления параметрами.
@@ -15,6 +18,21 @@ public class ParametersServiceImpl implements ParametersService {
 
     @Override
     public boolean isListServiceEnabled() {
-        return parametersApi.getBooleanParameter(LIST_SERVICE_ENABLED.getParameter());
+        return parametersApi.getBooleanParameter(LIST_SERVICE_ENABLED.getName());
+    }
+
+    @Override
+    public boolean isDetailsServiceEnabled() {
+        return parametersApi.getBooleanParameter(DETAILS_SERVICE_ENABLED.getName());
+    }
+
+    @Override
+    public boolean isMonitoringServiceEnabled() {
+        return parametersApi.getBooleanParameter(MONITORING_SERVICE_ENABLED.getName());
+    }
+
+    @Override
+    public boolean isSystemJournalServiceEnabled() {
+        return parametersApi.getBooleanParameter(SYSTEM_JOURNAL_SERVICE_ENABLED.getName());
     }
 }
