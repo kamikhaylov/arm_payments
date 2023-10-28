@@ -2,14 +2,12 @@ package ru.payments.arm.dto.response;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.ToString;
 
 /**
  * Базовый ответ для сервисов АРМа
  */
 @Data
 @NoArgsConstructor
-@ToString
 public class ArmResponse<T> {
 
     /** Тело ответа */

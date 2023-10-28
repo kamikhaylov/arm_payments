@@ -1,7 +1,6 @@
 package ru.payments.arm.dto.response;
 
 import lombok.Data;
-import lombok.ToString;
 
 import java.time.LocalDateTime;
 
@@ -9,7 +8,6 @@ import java.time.LocalDateTime;
  * Ответ для сервиса получения списка записей системного журнала
  */
 @Data
-@ToString
 public class SystemJournalResponse {
 
     /** Идентификатор записи */

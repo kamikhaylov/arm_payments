@@ -1,7 +1,6 @@
 package ru.payments.arm.dao.dto;
 
 import lombok.Data;
-import lombok.ToString;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
@@ -10,7 +9,6 @@ import java.time.LocalDateTime;
  * Представление данных таблицы payments в DTO списка платежей.
  */
 @Data
-@ToString
 public class PaymentListDaoDto {
 
     /** Идентификатор платежа */

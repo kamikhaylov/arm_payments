@@ -1,13 +1,11 @@
 package ru.payments.arm.dao.dto;
 
 import lombok.Data;
-import lombok.ToString;
 
 /**
  * Запрос для ДАО сервиса получения списка платежей
  */
 @Data
-@ToString
 public class PaymentListDaoRequest {
 
     /** Идентификатор платежа */

@@ -1,7 +1,6 @@
 package ru.payments.arm.dto.request;
 
 import lombok.Data;
-import lombok.ToString;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -10,7 +9,6 @@ import java.util.List;
  * Запрос для сервиса получения списка записей системного журнала
  */
 @Data
-@ToString
 public class SystemJournalRequest {
 
     /** Дата нижней границы фильтрации */

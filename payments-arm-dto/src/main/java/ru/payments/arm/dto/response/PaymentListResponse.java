@@ -1,7 +1,6 @@
 package ru.payments.arm.dto.response;
 
 import lombok.Data;
-import lombok.ToString;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
@@ -10,7 +9,6 @@ import java.time.LocalDateTime;
  * Ответ для сервиса получения списка платежей
  */
 @Data
-@ToString
 public class PaymentListResponse {
 
     /** Идентификатор платежа */
