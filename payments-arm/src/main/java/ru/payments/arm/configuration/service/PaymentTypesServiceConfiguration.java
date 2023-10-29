@@ -6,6 +6,7 @@ import org.springframework.context.annotation.Configuration;
 import ru.payments.arm.dao.api.PaymentTypeDao;
 import ru.payments.arm.dao.dto.PaymentTypeDaoDto;
 import ru.payments.arm.dao.dto.PaymentTypesFindDaoRequest;
+import ru.payments.arm.dto.request.MergePaymentTypeRequest;
 import ru.payments.arm.dto.request.PaymentTypesFindRequest;
 import ru.payments.arm.dto.response.PaymentTypesFindResponse;
 import ru.payments.arm.mapper.Mapper;
@@ -21,10 +22,12 @@ public class PaymentTypesServiceConfiguration {
     public PaymentTypesService paymentTypesService(
             @Qualifier("paymentTypeDao") PaymentTypeDao paymentTypeDao,
             @Qualifier("paymentTypesFindRequestMapper") Mapper<PaymentTypesFindRequest, PaymentTypesFindDaoRequest> paymentTypesFindRequestMapper,
-            @Qualifier("paymentTypesFindResponseMapper") Mapper<PaymentTypeDaoDto, PaymentTypesFindResponse> paymentTypesFindResponseMapper) {
+            @Qualifier("paymentTypesFindResponseMapper") Mapper<PaymentTypeDaoDto, PaymentTypesFindResponse> paymentTypesFindResponseMapper,
+            @Qualifier("mergePaymentTypeRequestMapper") Mapper<MergePaymentTypeRequest, PaymentTypeDaoDto> mergePaymentTypeRequestMapper) {
         return new PaymentTypesService(
                 paymentTypeDao,
                 paymentTypesFindRequestMapper,
-                paymentTypesFindResponseMapper);
+                paymentTypesFindResponseMapper,
+                mergePaymentTypeRequestMapper);
     }
 }

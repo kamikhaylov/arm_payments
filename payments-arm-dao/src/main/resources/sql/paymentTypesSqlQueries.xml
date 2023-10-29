@@ -19,4 +19,30 @@
         ]]>
     </entry>
 
+    <entry key="mergePaymentType">
+        <![CDATA[
+            insert into payment_types (
+                type,
+                description
+            )
+            values (
+                :type,
+                :description
+            )
+            on conflict (
+                type
+            )
+            do update set
+                type = :type,
+                description = :description
+        ]]>
+    </entry>
+
+    <entry key="deletePaymentType">
+        <![CDATA[
+            delete from payment_types
+            where type = :type
+        ]]>
+    </entry>
+
 </properties>

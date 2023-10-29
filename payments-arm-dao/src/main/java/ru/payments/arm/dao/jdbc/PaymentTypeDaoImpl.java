@@ -40,6 +40,32 @@ public class PaymentTypeDaoImpl implements PaymentTypeDao {
                 paymentTypesMapper);
     }
 
+    @Override
+    public void merge(PaymentTypeDaoDto paymentType) {
+        MapSqlParameterSource parameterSource =
+                new MapSqlParameterSource()
+                        .addValue(PaymentTypeModel.TYPE.getParameterName(),
+                                paymentType.getType(), Types.VARCHAR)
+                        .addValue(PaymentTypeModel.DESCRIPTION.getParameterName(),
+                                paymentType.getDescription(), Types.VARCHAR);
+
+        jdbcTemplate.update(
+                properties.getProperty(Queries.MERGE_PAYMENT_TYPE.getSqlKey()),
+                parameterSource);
+    }
+
+    @Override
+    public void delete(String type) {
+        MapSqlParameterSource parameterSource =
+                new MapSqlParameterSource()
+                        .addValue(PaymentTypeModel.TYPE.getParameterName(),
+                                type, Types.VARCHAR);
+
+        jdbcTemplate.update(
+                properties.getProperty(Queries.DELETE_PAYMENT_TYPE.getSqlKey()),
+                parameterSource);
+    }
+
     private String getLikeValue(String value) {
         return StringUtils.isNotEmpty(value) ? "%" + value + "%" : null;
     }

@@ -7,6 +7,7 @@ import ru.payments.arm.dao.dto.PaymentDetailsDaoDto;
 import ru.payments.arm.dao.dto.PaymentListDaoDto;
 import ru.payments.arm.dao.dto.PaymentTypeDaoDto;
 import ru.payments.arm.dao.dto.PaymentTypesFindDaoRequest;
+import ru.payments.arm.dto.request.MergePaymentTypeRequest;
 import ru.payments.arm.dto.request.PaymentTypesFindRequest;
 import ru.payments.arm.dto.response.MonitoringResponse;
 import ru.payments.arm.dto.response.PaymentDetailsResponse;
@@ -15,6 +16,7 @@ import ru.payments.arm.dto.response.PaymentTypesFindResponse;
 import ru.payments.arm.dto.response.SystemJournalResponse;
 import ru.payments.arm.logger.model.LogModel;
 import ru.payments.arm.mapper.Mapper;
+import ru.payments.arm.mapper.MergePaymentTypeRequestMapper;
 import ru.payments.arm.mapper.MonitoringResponseMapper;
 import ru.payments.arm.mapper.PaymentDetailsResponseMapper;
 import ru.payments.arm.mapper.PaymentListRequestMapper;
@@ -64,5 +66,10 @@ public class MapperConfiguration {
     @Bean
     public Mapper<PaymentTypeDaoDto, PaymentTypesFindResponse> paymentTypesFindResponseMapper() {
         return new PaymentTypesFindResponseMapper();
+    }
+
+    @Bean
+    public Mapper<MergePaymentTypeRequest, PaymentTypeDaoDto> mergePaymentTypeRequestMapper() {
+        return new MergePaymentTypeRequestMapper();
     }
 }

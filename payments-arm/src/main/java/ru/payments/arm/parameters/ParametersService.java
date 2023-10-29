@@ -19,4 +19,10 @@ public interface ParametersService {
 
     /** Возвращает признак включения сервиса получения списка типов платежей */
     boolean isTypeListServiceEnabled();
+
+    /** Возвращает признак включения сервиса вставки типа платежа */
+    boolean isMergeTypeServiceEnabled();
+
+    /** Возвращает признак включения сервиса удаления типа платежа */
+    boolean isDeleteTypeServiceEnabled();
 }

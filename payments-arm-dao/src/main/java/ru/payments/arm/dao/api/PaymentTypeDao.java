@@ -19,4 +19,17 @@ public interface PaymentTypeDao {
      */
     List<PaymentTypeDaoDto> findTypes(PaymentTypesFindDaoRequest daoRequest);
 
+    /**
+     * Вставка типа платежа
+     *
+     * @param paymentType ДТО типа платежа
+     */
+    void merge(PaymentTypeDaoDto paymentType);
+
+    /**
+     * Удаление типа платежа
+     *
+     * @param type тип платежа
+     */
+    void delete(String type);
 }

@@ -30,7 +30,17 @@ public enum PaymentMetric implements Metric {
     PAYMENT_TYPE_LIST_FIND_REQUEST("Количество вызовов сервиса получения списка типов платежей"),
     PAYMENT_TYPE_LIST_FIND_DURATION("Длительность ответа сервиса получения типов платежей"),
     PAYMENT_TYPE_LIST_FIND_SUCCESS("Количество успешных вызовов сервиса получения типов платежей"),
-    PAYMENT_TYPE_LIST_FIND_ERROR("Количество ошибок при работе сервиса получения типов платежей");
+    PAYMENT_TYPE_LIST_FIND_ERROR("Количество ошибок при работе сервиса получения типов платежей"),
+
+    PAYMENT_MERGE_TYPE_REQUEST("Количество вызовов сервиса вставки типа платежа"),
+    PAYMENT_MERGE_TYPE_DURATION("Длительность ответа сервиса вставки типа платежа"),
+    PAYMENT_MERGE_TYPE_SUCCESS("Количество успешных вызовов сервиса вставки типа платежа"),
+    PAYMENT_MERGE_TYPE_ERROR("Количество ошибок при работе сервиса вставки типа платежа"),
+
+    PAYMENT_DELETE_TYPE_REQUEST("Количество вызовов сервиса удаления типа платежа"),
+    PAYMENT_DELETE_TYPE_DURATION("Длительность ответа сервиса удаления типа платежа"),
+    PAYMENT_DELETE_TYPE_SUCCESS("Количество успешных вызовов сервиса удаления типа платежа"),
+    PAYMENT_DELETE_TYPE_ERROR("Количество ошибок при работе сервиса удаления типа платежа");
 
     private final String title;
 

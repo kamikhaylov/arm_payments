@@ -16,7 +16,12 @@ import static org.apache.commons.lang3.StringUtils.isNotBlank;
 public abstract class AbstractValidator<T> implements Validator<T> {
 
     protected static final String PAYMENT_ID_REGEX = "^[A-z0-9-]{36}$";
+    protected static final String TYPE_REGEX = "^[A-z]{1,50}$";
+    protected static final String DESCRIPTION_REGEX = "^[A-zА-яё ]{1,100}$";
+
     protected static final Predicate<String> CHECK_ID = x -> isNotBlank(x) && x.matches(PAYMENT_ID_REGEX);
+    protected static final Predicate<String> CHECK_TYPE = x -> isNotBlank(x) && x.matches(TYPE_REGEX);
+    protected static final Predicate<String> CHECK_DESCRIPTION = x -> isNotBlank(x) && x.matches(DESCRIPTION_REGEX);
 
     private final LogEvent logEvent;
 
