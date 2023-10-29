@@ -16,6 +16,10 @@ import static ru.payments.arm.monitoring.PaymentMetric.PAYMENT_LIST_FIND_DURATIO
 import static ru.payments.arm.monitoring.PaymentMetric.PAYMENT_LIST_FIND_ERROR;
 import static ru.payments.arm.monitoring.PaymentMetric.PAYMENT_LIST_FIND_REQUEST;
 import static ru.payments.arm.monitoring.PaymentMetric.PAYMENT_LIST_FIND_SUCCESS;
+import static ru.payments.arm.monitoring.PaymentMetric.PAYMENT_TYPE_LIST_FIND_DURATION;
+import static ru.payments.arm.monitoring.PaymentMetric.PAYMENT_TYPE_LIST_FIND_ERROR;
+import static ru.payments.arm.monitoring.PaymentMetric.PAYMENT_TYPE_LIST_FIND_REQUEST;
+import static ru.payments.arm.monitoring.PaymentMetric.PAYMENT_TYPE_LIST_FIND_SUCCESS;
 import static ru.payments.arm.monitoring.PaymentMetric.SYSTEM_JOURNAL_FIND_DURATION;
 import static ru.payments.arm.monitoring.PaymentMetric.SYSTEM_JOURNAL_FIND_ERROR;
 import static ru.payments.arm.monitoring.PaymentMetric.SYSTEM_JOURNAL_FIND_REQUEST;
@@ -46,7 +50,12 @@ public enum PaymentMonitoringPoint implements MonitoringPoint {
             MONITORING_METRICS_FIND_REQUEST,
             MONITORING_METRICS_FIND_DURATION,
             MONITORING_METRICS_FIND_SUCCESS,
-            MONITORING_METRICS_FIND_ERROR);
+            MONITORING_METRICS_FIND_ERROR),
+    PAYMENT_TYPE_LIST_FIND(
+            PAYMENT_TYPE_LIST_FIND_REQUEST,
+            PAYMENT_TYPE_LIST_FIND_DURATION,
+            PAYMENT_TYPE_LIST_FIND_SUCCESS,
+            PAYMENT_TYPE_LIST_FIND_ERROR);
 
     private final Metric startEvent;
     private final Metric durationEvent;

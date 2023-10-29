@@ -25,7 +25,12 @@ public enum PaymentMetric implements Metric {
     MONITORING_METRICS_FIND_REQUEST("Количество вызовов сервиса получения метрик мониторинга"),
     MONITORING_METRICS_FIND_DURATION("Длительность ответа сервиса получения метрик мониторинга"),
     MONITORING_METRICS_FIND_SUCCESS("Количество успешных вызовов сервиса получения метрик мониторинга"),
-    MONITORING_METRICS_FIND_ERROR("Количество ошибок при работе сервиса получения метрик мониторинга");
+    MONITORING_METRICS_FIND_ERROR("Количество ошибок при работе сервиса получения метрик мониторинга"),
+
+    PAYMENT_TYPE_LIST_FIND_REQUEST("Количество вызовов сервиса получения списка типов платежей"),
+    PAYMENT_TYPE_LIST_FIND_DURATION("Длительность ответа сервиса получения типов платежей"),
+    PAYMENT_TYPE_LIST_FIND_SUCCESS("Количество успешных вызовов сервиса получения типов платежей"),
+    PAYMENT_TYPE_LIST_FIND_ERROR("Количество ошибок при работе сервиса получения типов платежей");
 
     private final String title;
 

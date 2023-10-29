@@ -16,4 +16,7 @@ public interface ParametersService {
 
     /** Возвращает признак включения сервиса получения записей системного журнала */
     boolean isSystemJournalServiceEnabled();
+
+    /** Возвращает признак включения сервиса получения списка типов платежей */
+    boolean isTypeListServiceEnabled();
 }

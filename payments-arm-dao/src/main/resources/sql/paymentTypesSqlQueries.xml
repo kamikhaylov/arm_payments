@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+
+    <entry key="findPaymentTypeList">
+        <![CDATA[
+            select
+                types.type,
+                types.description
+
+            from payment_types as types
+            where
+                (:type::varchar is null
+                    or replace(upper(types.type), ' ', '') like upper(replace(:type, ' ', '')) escape '\')
+                and (:description::varchar is null
+                    or replace(upper(types.description), ' ', '') like upper(replace(:description, ' ', '')) escape '\')
+
+            order by types.type asc, types.description asc
+        ]]>
+    </entry>
+
+</properties>

@@ -7,6 +7,7 @@ import static ru.payments.arm.parameters.Parameters.DETAILS_SERVICE_ENABLED;
 import static ru.payments.arm.parameters.Parameters.LIST_SERVICE_ENABLED;
 import static ru.payments.arm.parameters.Parameters.MONITORING_SERVICE_ENABLED;
 import static ru.payments.arm.parameters.Parameters.SYSTEM_JOURNAL_SERVICE_ENABLED;
+import static ru.payments.arm.parameters.Parameters.TYPE_LIST_SERVICE_ENABLED;
 
 /**
  * Реализация сервиса управления параметрами.
@@ -34,5 +35,10 @@ public class ParametersServiceImpl implements ParametersService {
     @Override
     public boolean isSystemJournalServiceEnabled() {
         return parametersApi.getBooleanParameter(SYSTEM_JOURNAL_SERVICE_ENABLED.getName());
+    }
+
+    @Override
+    public boolean isTypeListServiceEnabled() {
+        return parametersApi.getBooleanParameter(TYPE_LIST_SERVICE_ENABLED.getName());
     }
 }
