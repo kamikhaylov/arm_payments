@@ -1,18 +1,18 @@
-package ru.payments.arm.parameters.logging;
+package ru.payments.arm.monitoring.logging;
 
 import ru.payments.arm.logger.api.LogEvent;
 
 /**
  * События для журналирования.
  */
-public enum ParameterLogEvent implements LogEvent {
+public enum MonitoringLogEvent implements LogEvent {
 
-    PAYMENT_PARAMETER_0001("Не найден параметр типа boolean"),
-    PAYMENT_PARAMETER_0002("Ошибка при поиске управляемого параметра");
+    MON0001("Ошибка при сохранение метрики мониторинга в таблице в monitoring_metrics"),
+    MON0002("Ошибка при поиске метрики мониториинга в таблице в monitoring_metrics");
 
     private final String title;
 
-    ParameterLogEvent(String title) {
+    MonitoringLogEvent(String title) {
         this.title = title;
     }
 

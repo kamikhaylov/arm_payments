@@ -9,14 +9,17 @@ import org.springframework.core.annotation.Order;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
+import ru.payments.arm.dao.exception.PaymentDaoException;
 import ru.payments.arm.dto.response.ArmMessage;
 import ru.payments.arm.dto.response.ArmResponse;
 import ru.payments.arm.exception.PaymentException;
 import ru.payments.arm.exception.PaymentValidationException;
 import ru.payments.arm.logger.api.LogEvent;
+import ru.payments.arm.logger.exception.LoggerException;
 import ru.payments.arm.logger.service.LoggerService;
 import ru.payments.arm.logger.service.PaymentLogger;
 import ru.payments.arm.logger.service.PaymentLoggerFactory;
+import ru.payments.arm.monitoring.exception.MonitoringException;
 import ru.payments.arm.parameters.exception.ParameterException;
 
 import java.util.Arrays;
@@ -58,7 +61,7 @@ public class RestLoggingAspect {
             logger.error(exc.getLogEvent(), exc, parameters);
             return new ResponseEntity<>(createResponse(exc.getLogEvent()), HttpStatus.BAD_REQUEST);
 
-        } catch (PaymentException exc) {
+        } catch (LoggerException | MonitoringException | PaymentDaoException | PaymentException exc) {
             logger.error(exc.getLogEvent(), exc, parameters);
             return new ResponseEntity<>(createResponse(exc.getLogEvent()), HttpStatus.BAD_REQUEST);
 
