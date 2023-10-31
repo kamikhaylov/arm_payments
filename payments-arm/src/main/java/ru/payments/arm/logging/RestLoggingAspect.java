@@ -9,6 +9,7 @@ import org.springframework.core.annotation.Order;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
+import ru.payments.arm.auth.exception.AuthException;
 import ru.payments.arm.dao.exception.PaymentDaoException;
 import ru.payments.arm.dto.response.ArmMessage;
 import ru.payments.arm.dto.response.ArmResponse;
@@ -61,7 +62,7 @@ public class RestLoggingAspect {
             logger.error(exc.getLogEvent(), exc, parameters);
             return new ResponseEntity<>(createResponse(exc.getLogEvent()), HttpStatus.BAD_REQUEST);
 
-        } catch (LoggerException | MonitoringException | PaymentDaoException | PaymentException exc) {
+        } catch (AuthException | LoggerException | MonitoringException | PaymentDaoException | PaymentException exc) {
             logger.error(exc.getLogEvent(), exc, parameters);
             return new ResponseEntity<>(createResponse(exc.getLogEvent()), HttpStatus.BAD_REQUEST);
 

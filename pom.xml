@@ -18,6 +18,7 @@
         <module>payments-arm-logger</module>
         <module>payments-arm-monitoring</module>
         <module>payments-arm-parameters</module>
+        <module>payments-arm-auth</module>
     </modules>
 
     <groupId>ru.payments.arm</groupId>

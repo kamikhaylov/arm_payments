@@ -11,5 +11,7 @@
     <include file="scripts/ddl/0003_ddl_init_steps.sql" relativeToChangelogFile="true"/>
     <include file="scripts/ddl/0004_ddl_init_steps.sql" relativeToChangelogFile="true"/>
     <include file="scripts/dml/0002_dml_init_steps.sql" relativeToChangelogFile="true"/>
+    <include file="scripts/ddl/0005_ddl_init_steps.sql" relativeToChangelogFile="true"/>
+    <include file="scripts/dml/0003_dml_init_steps.sql" relativeToChangelogFile="true"/>
 
 </databaseChangeLog>
