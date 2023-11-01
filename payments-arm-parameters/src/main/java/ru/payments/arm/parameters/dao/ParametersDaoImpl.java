@@ -3,7 +3,7 @@ package ru.payments.arm.parameters.dao;
 import lombok.AllArgsConstructor;
 import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Repository;
-import ru.payments.arm.parameters.exception.ParameterException;
+import ru.payments.arm.logger.exception.PaymentException;
 import ru.payments.arm.parameters.model.ParameterModel;
 
 import static ru.payments.arm.parameters.logging.ParameterLogEvent.PAYMENT_PARAMETER_0002;
@@ -23,7 +23,7 @@ public class ParametersDaoImpl implements ParametersDao {
         try {
             return parametersCrudDao.findByName(name);
         } catch (Exception exc) {
-            throw new ParameterException(PAYMENT_PARAMETER_0002, name);
+            throw new PaymentException(PAYMENT_PARAMETER_0002, name);
         }
     }
 }

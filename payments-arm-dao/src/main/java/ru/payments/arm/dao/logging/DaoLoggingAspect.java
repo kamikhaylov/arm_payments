@@ -7,8 +7,8 @@ import org.aspectj.lang.annotation.Pointcut;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
-import ru.payments.arm.dao.exception.PaymentDaoException;
 import ru.payments.arm.logger.api.LogEvent;
+import ru.payments.arm.logger.exception.PaymentException;
 import ru.payments.arm.logger.service.LoggerService;
 import ru.payments.arm.logger.service.PaymentLogger;
 import ru.payments.arm.logger.service.PaymentLoggerFactory;
@@ -35,17 +35,16 @@ public class DaoLoggingAspect {
 
     @Around("callMethod() && @annotation(logged)")
     public Object call(ProceedingJoinPoint jp, DaoPaymentLogged logged) throws Throwable {
-        Object method;
         String parameters = Arrays.toString(jp.getArgs());
 
         try {
             logger.info(logged.logPoint().getStart(), parameters);
-            method = jp.proceed();
+            Object method = jp.proceed();
             logger.info(logged.logPoint().getFinish(), method.toString());
             return method;
 
         } catch (Exception exc) {
-            throw new PaymentDaoException(logged.logPoint().getError(), parameters);
+            throw new PaymentException(logged.logPoint().getError(), parameters);
         }
     }
 }

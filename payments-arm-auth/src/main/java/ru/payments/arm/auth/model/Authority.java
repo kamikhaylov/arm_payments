@@ -24,9 +24,12 @@ import javax.persistence.Table;
 @Table(name = "authorities")
 public class Authority {
 
+    /** Идентификатор роли пользователя */
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
+    /** Роль пользователя */
     private String authority;
+
 }

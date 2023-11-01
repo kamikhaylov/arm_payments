@@ -3,7 +3,7 @@ package ru.payments.arm.monitoring.dao;
 import lombok.AllArgsConstructor;
 import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Repository;
-import ru.payments.arm.monitoring.exception.MonitoringException;
+import ru.payments.arm.logger.exception.PaymentException;
 import ru.payments.arm.monitoring.model.MetricModel;
 
 import javax.persistence.EntityManager;
@@ -32,7 +32,7 @@ public class MonitoringDaoImpl implements MonitoringDao {
         try {
             monitoringCrudDao.save(metric);
         } catch (Exception exc) {
-            throw new MonitoringException(MON0001, metric.getCode());
+            throw new PaymentException(MON0001, metric.getCode());
         }
     }
 
@@ -44,7 +44,7 @@ public class MonitoringDaoImpl implements MonitoringDao {
                            .setMaxResults(count)
                            .getResultList();
         } catch (Exception exc) {
-            throw new MonitoringException(MON0002);
+            throw new PaymentException(MON0002);
         }
     }
 }

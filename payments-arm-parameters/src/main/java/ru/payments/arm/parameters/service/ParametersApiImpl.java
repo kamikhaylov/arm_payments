@@ -2,7 +2,7 @@ package ru.payments.arm.parameters.service;
 
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
-import ru.payments.arm.parameters.exception.ParameterException;
+import ru.payments.arm.logger.exception.PaymentException;
 import ru.payments.arm.parameters.api.ParametersApi;
 import ru.payments.arm.parameters.dao.ParametersDao;
 import ru.payments.arm.parameters.model.ParameterModel;
@@ -27,7 +27,7 @@ public class ParametersApiImpl implements ParametersApi {
         if (nonNull(parameter) && parameter.getJavaType().equals(BOOLEAN_TYPE.getJavaType())) {
             return Boolean.parseBoolean(parameter.getValue());
         } else {
-            throw new ParameterException(PAYMENT_PARAMETER_0001, name);
+            throw new PaymentException(PAYMENT_PARAMETER_0001, name);
         }
     }
 }

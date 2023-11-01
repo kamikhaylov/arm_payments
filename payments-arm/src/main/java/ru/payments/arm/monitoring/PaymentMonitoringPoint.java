@@ -28,6 +28,10 @@ import static ru.payments.arm.monitoring.PaymentMetric.PAYMENT_TYPE_LIST_FIND_DU
 import static ru.payments.arm.monitoring.PaymentMetric.PAYMENT_TYPE_LIST_FIND_ERROR;
 import static ru.payments.arm.monitoring.PaymentMetric.PAYMENT_TYPE_LIST_FIND_REQUEST;
 import static ru.payments.arm.monitoring.PaymentMetric.PAYMENT_TYPE_LIST_FIND_SUCCESS;
+import static ru.payments.arm.monitoring.PaymentMetric.REGISTRATION_SIGN_UP_DURATION;
+import static ru.payments.arm.monitoring.PaymentMetric.REGISTRATION_SIGN_UP_ERROR;
+import static ru.payments.arm.monitoring.PaymentMetric.REGISTRATION_SIGN_UP_REQUEST;
+import static ru.payments.arm.monitoring.PaymentMetric.REGISTRATION_SIGN_UP_SUCCESS;
 import static ru.payments.arm.monitoring.PaymentMetric.SYSTEM_JOURNAL_FIND_DURATION;
 import static ru.payments.arm.monitoring.PaymentMetric.SYSTEM_JOURNAL_FIND_ERROR;
 import static ru.payments.arm.monitoring.PaymentMetric.SYSTEM_JOURNAL_FIND_REQUEST;
@@ -73,7 +77,12 @@ public enum PaymentMonitoringPoint implements MonitoringPoint {
             PAYMENT_DELETE_TYPE_REQUEST,
             PAYMENT_DELETE_TYPE_DURATION,
             PAYMENT_DELETE_TYPE_SUCCESS,
-            PAYMENT_DELETE_TYPE_ERROR);
+            PAYMENT_DELETE_TYPE_ERROR),
+    REGISTRATION_SIGN_UP(
+            REGISTRATION_SIGN_UP_REQUEST,
+            REGISTRATION_SIGN_UP_DURATION,
+            REGISTRATION_SIGN_UP_SUCCESS,
+            REGISTRATION_SIGN_UP_ERROR);
 
     private final Metric startEvent;
     private final Metric durationEvent;

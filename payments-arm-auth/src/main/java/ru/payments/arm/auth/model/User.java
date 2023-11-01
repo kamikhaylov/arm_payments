@@ -14,9 +14,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-import javax.validation.constraints.NotBlank;
+import java.util.HashSet;
 import java.util.Set;
 
 /**
@@ -38,21 +37,21 @@ public class User {
     private Integer id;
 
     /** Логин */
-    @NotBlank(message = "Не заполнен логин")
     private String login;
 
     /** Пароль */
-    @NotBlank(message = "Не заполнен пароль")
     private String password;
 
     /** Почтовый ящик */
-    @NotBlank(message = "Не заполнен почтовый ящик")
     private String email;
+
+    /** Признак доступности учетной записи */
+    private boolean enabled;
 
     /** Роли пользователя */
     @ManyToMany(cascade = CascadeType.MERGE)
     @JoinTable(name = "user_authorities",
             joinColumns = {@JoinColumn(name = "user_id", nullable = false, updatable = false)},
             inverseJoinColumns = {@JoinColumn(name = "authority_id", nullable = false, updatable = false)})
-    private Set<Authority> authorities;
+    private Set<Authority> authorities = new HashSet<>();
 }

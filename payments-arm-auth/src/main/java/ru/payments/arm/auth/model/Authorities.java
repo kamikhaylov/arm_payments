@@ -5,16 +5,15 @@ import lombok.Getter;
 
 @AllArgsConstructor
 @Getter
-public enum Authorities {
+public class Authorities {
 
-    VIEW_PAYMENTS("view.payments"),
-    EDIT_PAYMENTS("edit.payments"),
-    VIEW_PAYMENT_TYPES("view.paymentTypes"),
-    EDIT_PAYMENT_TYPES("edit.paymentTypes"),
-    VIEW_SYSTEM_JOURNAL("view.systemJournal"),
-    EDIT_SYSTEM_JOURNAL("edit.systemJournal"),
-    VIEW_METRIC_MONITORING("view.metricMonitoring"),
-    EDIT_METRIC_MONITORING("edit.metricMonitoring");
+    public static final String VIEW_PAYMENTS = "view.payments";
+    public static final String EDIT_PAYMENTS = "edit.payments";
+    public static final String VIEW_PAYMENT_TYPES = "view.paymentTypes";
+    public static final String EDIT_PAYMENT_TYPES = "edit.paymentTypes";
+    public static final String VIEW_SYSTEM_JOURNAL = "view.systemJournal";
+    public static final String EDIT_SYSTEM_JOURNAL = "edit.systemJournal";
+    public static final String VIEW_METRIC_MONITORING = "view.metricMonitoring";
+    public static final String EDIT_METRIC_MONITORING = "edit.metricMonitoring";
 
-    private final String authority;
 }

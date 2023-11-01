@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 import ru.payments.arm.dto.request.MonitoringRequest;
 import ru.payments.arm.dto.response.ArmResponse;
 import ru.payments.arm.dto.response.MonitoringResponse;
-import ru.payments.arm.exception.PaymentException;
+import ru.payments.arm.logger.exception.PaymentException;
 import ru.payments.arm.logging.RestPaymentLogged;
 import ru.payments.arm.monitoring.PaymentMonitored;
 import ru.payments.arm.parameters.ParametersService;

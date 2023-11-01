@@ -3,9 +3,9 @@ package ru.payments.arm.auth.dao;
 import lombok.AllArgsConstructor;
 import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Repository;
-import ru.payments.arm.auth.exception.AuthException;
 import ru.payments.arm.auth.model.Authority;
 import ru.payments.arm.auth.model.User;
+import ru.payments.arm.logger.exception.PaymentException;
 
 import javax.transaction.Transactional;
 import java.util.Optional;
@@ -30,7 +30,7 @@ public class AuthDaoImpl implements AuthDao {
         try {
             return userCrudDao.findByLogin(login);
         } catch (Exception ex) {
-            throw new AuthException(AUTH0004, login);
+            throw new PaymentException(AUTH0004, login);
         }
     }
 
@@ -38,7 +38,7 @@ public class AuthDaoImpl implements AuthDao {
         try {
             return userCrudDao.findByEmail(email);
         } catch (Exception ex) {
-            throw new AuthException(AUTH0005, email);
+            throw new PaymentException(AUTH0005, email);
 
         }
     }
@@ -47,8 +47,7 @@ public class AuthDaoImpl implements AuthDao {
         try {
             return authorityCrudDao.findByAuthority(authority);
         } catch (Exception ex) {
-            throw new AuthException(AUTH0006, authority);
-
+            throw new PaymentException(AUTH0006, authority);
         }
     }
 
@@ -57,7 +56,7 @@ public class AuthDaoImpl implements AuthDao {
         try {
             userCrudDao.save(user);
         } catch (Exception ex) {
-            throw new AuthException(AUTH0007, user.getLogin());
+            throw new PaymentException(AUTH0007, ex, user.getLogin());
         }
     }
 }

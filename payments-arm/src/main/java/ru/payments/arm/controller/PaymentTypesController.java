@@ -12,7 +12,7 @@ import ru.payments.arm.dto.request.MergePaymentTypeRequest;
 import ru.payments.arm.dto.request.PaymentTypesFindRequest;
 import ru.payments.arm.dto.response.ArmResponse;
 import ru.payments.arm.dto.response.PaymentTypesFindResponse;
-import ru.payments.arm.exception.PaymentException;
+import ru.payments.arm.logger.exception.PaymentException;
 import ru.payments.arm.logging.RestPaymentLogged;
 import ru.payments.arm.monitoring.PaymentMonitored;
 import ru.payments.arm.parameters.ParametersService;

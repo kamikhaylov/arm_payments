@@ -22,6 +22,12 @@ public class PaymentBaseException extends RuntimeException implements LogExcepti
         this.arg = arg;
     }
 
+    public PaymentBaseException(LogEvent logEvent, Throwable cause, String arg) {
+        super(formatMessage(logEvent, arg), cause);
+        this.logEvent = logEvent;
+        this.arg = arg;
+    }
+
     private static String formatMessage(LogEvent logEvent, String arg) {
         return String.format(FORMAT, logEvent.toString(), arg);
     }

@@ -1,16 +1,19 @@
 package ru.payments.arm.auth.service;
 
 import lombok.AllArgsConstructor;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import ru.payments.arm.auth.dao.AuthDao;
-import ru.payments.arm.auth.exception.AuthException;
 import ru.payments.arm.auth.model.Authority;
 import ru.payments.arm.auth.model.User;
+import ru.payments.arm.logger.exception.PaymentException;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 import java.util.Set;
 
@@ -47,23 +50,24 @@ public class AuthorizationService implements UserDetailsService {
         try {
             Optional<User> userFound = authDao.findByLogin(user.getLogin());
             if (userFound.isPresent()) {
-                throw new AuthException(AUTH0001, user.getLogin());
+                throw new PaymentException(AUTH0001, user.getLogin());
             }
             userFound = authDao.findByEmail(user.getEmail());
             if (userFound.isPresent()) {
-                throw new AuthException(AUTH0002, user.getEmail());
+                throw new PaymentException(AUTH0002, user.getEmail());
             }
-            Optional<Authority> defaultAuthority = authDao.findByAuthority(VIEW_PAYMENTS.getAuthority());
+            Optional<Authority> defaultAuthority = authDao.findByAuthority(VIEW_PAYMENTS);
             if (defaultAuthority.isEmpty()) {
-                throw new AuthException(AUTH0003, user.getEmail());
+                throw new PaymentException(AUTH0003, user.getEmail());
             }
             user.setPassword(passwordEncoder.encode(user.getPassword()));
+            user.setEnabled(true);
             user.setAuthorities(Set.of(defaultAuthority.get()));
             authDao.save(user);
-        } catch (AuthException ex) {
+        } catch (PaymentException ex) {
             throw ex;
         } catch (Exception ex) {
-            throw new AuthException(AUTH0008, user.getLogin());
+            throw new PaymentException(AUTH0008, user.getLogin());
         }
     }
 }

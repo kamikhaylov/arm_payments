@@ -3,7 +3,7 @@ package ru.payments.arm.logger.dao;
 import lombok.AllArgsConstructor;
 import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Repository;
-import ru.payments.arm.logger.exception.LoggerException;
+import ru.payments.arm.logger.exception.PaymentException;
 import ru.payments.arm.logger.model.LogModel;
 
 import javax.persistence.EntityManager;
@@ -32,7 +32,7 @@ public class LoggerDaoImpl implements LoggerDao {
         try {
             loggerCrudDao.save(log);
         } catch (Exception ex) {
-            throw new LoggerException(LOG0001, log.getMessage());
+            throw new PaymentException(LOG0001, log.getMessage());
         }
     }
 
@@ -44,7 +44,7 @@ public class LoggerDaoImpl implements LoggerDao {
                            .setMaxResults(count)
                            .getResultList();
         } catch (Exception ex) {
-            throw new LoggerException(LOG0002);
+            throw new PaymentException(LOG0002);
         }
     }
 }

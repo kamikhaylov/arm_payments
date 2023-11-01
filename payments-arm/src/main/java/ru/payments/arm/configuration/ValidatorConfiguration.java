@@ -8,6 +8,7 @@ import ru.payments.arm.dto.request.MonitoringRequest;
 import ru.payments.arm.dto.request.PaymentDetailsRequest;
 import ru.payments.arm.dto.request.PaymentListRequest;
 import ru.payments.arm.dto.request.PaymentTypesFindRequest;
+import ru.payments.arm.dto.request.RegistrationRequest;
 import ru.payments.arm.dto.request.SystemJournalRequest;
 import ru.payments.arm.validation.DeletePaymentTypeRequestValidator;
 import ru.payments.arm.validation.MergePaymentTypeRequestValidator;
@@ -15,6 +16,7 @@ import ru.payments.arm.validation.MonitoringRequestValidator;
 import ru.payments.arm.validation.PaymentDetailsRequestValidator;
 import ru.payments.arm.validation.PaymentListRequestValidator;
 import ru.payments.arm.validation.PaymentTypesFindRequestValidator;
+import ru.payments.arm.validation.RegistrationRequestValidator;
 import ru.payments.arm.validation.SystemJournalRequestValidator;
 import ru.payments.arm.validation.Validator;
 
@@ -67,4 +69,8 @@ public class ValidatorConfiguration {
         return new DeletePaymentTypeRequestValidator(PAYMENT0035);
     }
 
+    @Bean
+    public Validator<RegistrationRequest> registrationRequestValidator() {
+        return new RegistrationRequestValidator(PAYMENT0035);
+    }
 }

@@ -40,7 +40,12 @@ public enum PaymentMetric implements Metric {
     PAYMENT_DELETE_TYPE_REQUEST("Количество вызовов сервиса удаления типа платежа"),
     PAYMENT_DELETE_TYPE_DURATION("Длительность ответа сервиса удаления типа платежа"),
     PAYMENT_DELETE_TYPE_SUCCESS("Количество успешных вызовов сервиса удаления типа платежа"),
-    PAYMENT_DELETE_TYPE_ERROR("Количество ошибок при работе сервиса удаления типа платежа");
+    PAYMENT_DELETE_TYPE_ERROR("Количество ошибок при работе сервиса удаления типа платежа"),
+
+    REGISTRATION_SIGN_UP_REQUEST("Количество вызовов сервиса регистрации пользователя"),
+    REGISTRATION_SIGN_UP_DURATION("Длительность ответа сервиса регистрации пользователя"),
+    REGISTRATION_SIGN_UP_SUCCESS("Количество успешных вызовов сервиса регистрации пользователя"),
+    REGISTRATION_SIGN_UP_ERROR("Количество ошибок при работе сервиса регистрации пользователя");
 
     private final String title;
 
