@@ -18,8 +18,10 @@ import ru.payments.arm.service.PaymentListService;
 import ru.payments.arm.service.context.PaymentListContext;
 import ru.payments.arm.validation.Validator;
 
+import javax.annotation.security.RolesAllowed;
 import java.util.List;
 
+import static ru.payments.arm.auth.model.Authorities.VIEW_PAYMENTS;
 import static ru.payments.arm.logging.PaymentLogEvent.PAYMENT0001;
 import static ru.payments.arm.logging.PaymentLogEvent.PAYMENT0002;
 import static ru.payments.arm.logging.PaymentLogEvent.PAYMENT0003;
@@ -41,6 +43,7 @@ public class PaymentListController {
     @PostMapping("/payment/list/find")
     @RestPaymentLogged(start = PAYMENT0001, success = PAYMENT0002, fail = PAYMENT0003)
     @PaymentMonitored(PAYMENT_LIST_FIND)
+    @RolesAllowed(VIEW_PAYMENTS)
     public ResponseEntity<ArmResponse<List<PaymentListResponse>>> getPayments(@RequestBody PaymentListRequest request) {
         if (parameters.isListServiceEnabled()) {
             paymentListRequestValidator.validateAndThrow(request);

@@ -19,8 +19,11 @@ import ru.payments.arm.parameters.ParametersService;
 import ru.payments.arm.service.PaymentTypesService;
 import ru.payments.arm.validation.Validator;
 
+import javax.annotation.security.RolesAllowed;
 import java.util.List;
 
+import static ru.payments.arm.auth.model.Authorities.EDIT_PAYMENT_TYPES;
+import static ru.payments.arm.auth.model.Authorities.VIEW_PAYMENT_TYPES;
 import static ru.payments.arm.logging.PaymentLogEvent.PAYMENT0021;
 import static ru.payments.arm.logging.PaymentLogEvent.PAYMENT0022;
 import static ru.payments.arm.logging.PaymentLogEvent.PAYMENT0023;
@@ -54,6 +57,7 @@ public class PaymentTypesController {
     @PostMapping("/payment/types/find")
     @RestPaymentLogged(start = PAYMENT0021, success = PAYMENT0022, fail = PAYMENT0023)
     @PaymentMonitored(PAYMENT_TYPE_LIST_FIND)
+    @RolesAllowed(VIEW_PAYMENT_TYPES)
     public ResponseEntity<ArmResponse<List<PaymentTypesFindResponse>>> findTypes(@RequestBody PaymentTypesFindRequest request) {
         if (parameters.isTypeListServiceEnabled()) {
             paymentTypesFindRequestValidator.validateAndThrow(request);
@@ -68,6 +72,7 @@ public class PaymentTypesController {
     @PostMapping("/payment/type/merge")
     @RestPaymentLogged(start = PAYMENT0026, success = PAYMENT0027, fail = PAYMENT0028)
     @PaymentMonitored(PAYMENT_MERGE_TYPE)
+    @RolesAllowed(EDIT_PAYMENT_TYPES)
     public ResponseEntity<Void> mergeType(@RequestBody MergePaymentTypeRequest request) {
         if (parameters.isMergeTypeServiceEnabled()) {
             mergePaymentTypeRequestValidator.validateAndThrow(request);
@@ -82,6 +87,7 @@ public class PaymentTypesController {
     @PostMapping("/payment/type/delete")
     @RestPaymentLogged(start = PAYMENT0031, success = PAYMENT0032, fail = PAYMENT0033)
     @PaymentMonitored(PAYMENT_DELETE_TYPE)
+    @RolesAllowed(EDIT_PAYMENT_TYPES)
     public ResponseEntity<Void> mergeType(@RequestBody DeletePaymentTypeRequest request) {
         if (parameters.isDeleteTypeServiceEnabled()) {
             deletePaymentTypeRequestValidator.validateAndThrow(request);

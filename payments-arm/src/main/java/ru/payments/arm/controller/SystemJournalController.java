@@ -17,8 +17,10 @@ import ru.payments.arm.parameters.ParametersService;
 import ru.payments.arm.service.SystemJournalService;
 import ru.payments.arm.validation.Validator;
 
+import javax.annotation.security.RolesAllowed;
 import java.util.List;
 
+import static ru.payments.arm.auth.model.Authorities.VIEW_SYSTEM_JOURNAL;
 import static ru.payments.arm.logging.PaymentLogEvent.PAYMENT0007;
 import static ru.payments.arm.logging.PaymentLogEvent.PAYMENT0008;
 import static ru.payments.arm.logging.PaymentLogEvent.PAYMENT0009;
@@ -40,6 +42,7 @@ public class SystemJournalController {
     @PostMapping("/logger/systemJournal/find")
     @RestPaymentLogged(start = PAYMENT0007, success = PAYMENT0008, fail = PAYMENT0009)
     @PaymentMonitored(SYSTEM_JOURNAL_FIND)
+    @RolesAllowed(VIEW_SYSTEM_JOURNAL)
     public ResponseEntity<ArmResponse<List<SystemJournalResponse>>> getSystemJournal(@RequestBody SystemJournalRequest request) {
         if (parameters.isSystemJournalServiceEnabled()) {
             systemJournalRequestValidator.validateAndThrow(request);

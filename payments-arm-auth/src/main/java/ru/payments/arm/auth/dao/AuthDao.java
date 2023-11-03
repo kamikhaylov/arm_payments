@@ -1,11 +1,14 @@
 package ru.payments.arm.auth.dao;
 
 import org.springframework.context.annotation.Primary;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 import ru.payments.arm.auth.model.Authority;
 import ru.payments.arm.auth.model.User;
+import ru.payments.arm.auth.model.UserAuthorities;
 
 import java.util.Optional;
+import java.util.Set;
 
 /**
  * Интерфейс взаимодействия с таблицей users authorities
@@ -44,4 +47,18 @@ public interface AuthDao {
      * @param user пользователь
      */
     void save(User user);
+
+    /**
+     * Получить роли пользователя по ИД пользователя
+     *
+     * @param userId ИД пользователя
+     */
+    Set<UserAuthorities> findUserAuthoritiesByUserId(Integer userId);
+
+    /**
+     * Получить роли по списку ИД ролей
+     *
+     * @param ids список ИД ролей
+     */
+    Set<Authority> findAuthorityByIdList(@Param("ids") Set<Integer> ids);
 }

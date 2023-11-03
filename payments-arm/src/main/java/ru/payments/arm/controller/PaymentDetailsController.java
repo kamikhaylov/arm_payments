@@ -17,6 +17,9 @@ import ru.payments.arm.parameters.ParametersService;
 import ru.payments.arm.service.PaymentDetailsService;
 import ru.payments.arm.validation.Validator;
 
+import javax.annotation.security.RolesAllowed;
+
+import static ru.payments.arm.auth.model.Authorities.VIEW_PAYMENTS;
 import static ru.payments.arm.logging.PaymentLogEvent.PAYMENT0004;
 import static ru.payments.arm.logging.PaymentLogEvent.PAYMENT0005;
 import static ru.payments.arm.logging.PaymentLogEvent.PAYMENT0006;
@@ -38,6 +41,7 @@ public class PaymentDetailsController {
     @PostMapping("/payment/details/get")
     @RestPaymentLogged(start = PAYMENT0004, success = PAYMENT0005, fail = PAYMENT0006)
     @PaymentMonitored(PAYMENT_DETAILS_FIND)
+    @RolesAllowed(VIEW_PAYMENTS)
     public ResponseEntity<ArmResponse<PaymentDetailsResponse>> getPayment(@RequestBody PaymentDetailsRequest request) {
         if (parameters.isDetailsServiceEnabled()) {
             paymentDetailsRequestValidator.validateAndThrow(request);

@@ -17,8 +17,10 @@ import ru.payments.arm.parameters.ParametersService;
 import ru.payments.arm.service.PaymentMonitoringService;
 import ru.payments.arm.validation.Validator;
 
+import javax.annotation.security.RolesAllowed;
 import java.util.List;
 
+import static ru.payments.arm.auth.model.Authorities.VIEW_METRIC_MONITORING;
 import static ru.payments.arm.logging.PaymentLogEvent.PAYMENT0010;
 import static ru.payments.arm.logging.PaymentLogEvent.PAYMENT0011;
 import static ru.payments.arm.logging.PaymentLogEvent.PAYMENT0012;
@@ -40,6 +42,7 @@ public class MonitoringController {
     @PostMapping("/monitoring/metrics/find")
     @RestPaymentLogged(start = PAYMENT0010, success = PAYMENT0011, fail = PAYMENT0012)
     @PaymentMonitored(MONITORING_METRICS_FIND)
+    @RolesAllowed(VIEW_METRIC_MONITORING)
     public ResponseEntity<ArmResponse<List<MonitoringResponse>>> getMonitoringMetrics(@RequestBody MonitoringRequest request) {
         if (parameters.isMonitoringServiceEnabled()) {
             monitoringRequestValidator.validateAndThrow(request);

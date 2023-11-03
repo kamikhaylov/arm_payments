@@ -40,7 +40,7 @@ public class DaoLoggingAspect {
         try {
             logger.info(logged.logPoint().getStart(), parameters);
             Object method = jp.proceed();
-            logger.info(logged.logPoint().getFinish(), method.toString());
+            logger.info(logged.logPoint().getFinish(), parameters);
             return method;
 
         } catch (Exception exc) {

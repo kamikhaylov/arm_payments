@@ -21,7 +21,7 @@ public enum PaymentDaoLogEvent implements LogEvent {
     DAO0012("Ошибка вставки типа платежа в таблицу payment_types"),
     DAO0013("Удаление типа платежа в таблицу payment_types"),
     DAO0014("Завершено удаление типа платежа в таблицу payment_types"),
-    DAO0015("Ошибка удаления типа платежа в таблицу payment_types");
+    DAO0015("Ошибка удаления типа платежа в таблице payment_types");
 
     private final String title;
 
