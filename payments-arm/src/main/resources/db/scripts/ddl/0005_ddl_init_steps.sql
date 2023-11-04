@@ -39,6 +39,23 @@ comment on table user_authorities is 'Выданные роли пользова
 comment on column user_authorities.id is 'Идентификатор выданной роли';
 comment on column user_authorities.user_id is 'Идентификатор пользователя';
 comment on column user_authorities.authority_id is 'Идентификатор роли';
+/
 
 -- changeset konstantin:0005_ddl_initial_steps_#0004 logicalFilePath:path-independent runOnChange:true splitStatements:true endDelimiter:/
 alter table user_authorities add constraint uc_user_id_authority_id unique (user_id, authority_id);
+/
+
+-- changeset konstantin:0005_ddl_initial_steps_#0005 logicalFilePath:path-independent runOnChange:true splitStatements:true endDelimiter:/
+create table if not exists user_tokens (
+    user_id         int             not null    unique,
+    token           varchar         not null,
+    created         timestamp       not null,
+
+    constraint fk_user_id foreign key (user_id) references users (id)
+);
+
+comment on table user_tokens is 'Токены пользователей';
+comment on column user_tokens.user_id is 'Идентификатор пользователя';
+comment on column user_tokens.token is 'Токен';
+comment on column user_tokens.created is 'Дата и время создания токена';
+/
