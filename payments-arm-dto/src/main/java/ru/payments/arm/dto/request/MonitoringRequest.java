@@ -1,6 +1,9 @@
 package ru.payments.arm.dto.request;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
+
+import java.time.LocalDateTime;
 
 /**
  * Запрос для сервиса получения метрик мониторинга
@@ -9,10 +12,12 @@ import lombok.Data;
 public class MonitoringRequest {
 
     /** Дата нижней границы фильтрации */
-    private String from;
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    private LocalDateTime from;
 
     /** Дата верхней границы фильтрации */
-    private String to;
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    private LocalDateTime to;
 
     /** Код метрики */
     private String code;

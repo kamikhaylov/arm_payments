@@ -11,7 +11,7 @@ import java.time.LocalDateTime;
 public class MonitoringResponse {
 
     /** Идентификатор записи */
-    private int id;
+    private Integer id;
 
     /** Дата и время записи */
     private LocalDateTime created;
@@ -23,5 +23,5 @@ public class MonitoringResponse {
     private String name;
 
     /** Значение метрики */
-    private double value;
+    private Double value;
 }

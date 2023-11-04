@@ -25,7 +25,7 @@ public class MetricModel {
     /** Идентификатор записи */
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Integer id;
 
     /** Дата и время записи */
     private LocalDateTime created;
@@ -38,5 +38,5 @@ public class MetricModel {
 
     /** Значение метрики */
     @Column(name = "metric_value")
-    private double value;
+    private Double value;
 }

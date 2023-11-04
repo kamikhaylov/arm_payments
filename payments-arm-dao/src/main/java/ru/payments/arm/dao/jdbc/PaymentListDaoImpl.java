@@ -46,6 +46,7 @@ public class PaymentListDaoImpl implements PaymentListDao {
                                 daoRequest.getOffset(), Types.INTEGER)
                         .addValue("pageSize",
                                 daoRequest.getPageSize(), Types.INTEGER);
+        System.out.println(parameterSource);
 
         return jdbcTemplate.query(
                 properties.getProperty(Queries.FIND_PAYMENT_LIST.getSqlKey()),

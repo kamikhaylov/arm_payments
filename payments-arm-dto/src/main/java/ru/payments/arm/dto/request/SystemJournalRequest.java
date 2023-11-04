@@ -1,5 +1,6 @@
 package ru.payments.arm.dto.request;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
 
 import java.time.LocalDateTime;
@@ -12,16 +13,15 @@ import java.util.List;
 public class SystemJournalRequest {
 
     /** Дата нижней границы фильтрации */
-    private String from;
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    private LocalDateTime from;
 
     /** Дата верхней границы фильтрации */
-    private String to;
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    private LocalDateTime to;
 
     /** Список уровеней логирования */
     private List<String> level;
-
-    /** Дата и время записи */
-    private LocalDateTime created;
 
     /** Запись журнала */
     private String message;
