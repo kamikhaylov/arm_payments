@@ -226,6 +226,12 @@
                         <exclude>**/dto/*</exclude>
                         <exclude>**/configuration/*</exclude>
                         <exclude>**/model/*</exclude>
+                        <exclude>**/mapper/*</exclude>
+                        <exclude>**/validation/*</exclude>
+                        <exclude>**/logging/*</exclude>
+                        <exclude>**/monitoring/*</exclude>
+                        <exclude>**/exception/*</exclude>
+                        <exclude>**/context/*</exclude>
                         <exclude>**/Application.class</exclude>
                     </excludes>
                 </configuration>
