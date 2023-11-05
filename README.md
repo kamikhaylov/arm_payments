@@ -737,5 +737,5 @@ Java, SpringBoot, Spring AOP, Spring Data, Spring Security, PostgreSQL, JUnit, M
 
 [actions-image]: https://github.com/kamikhaylov/arm_payments/actions/workflows/maven.yml/badge.svg
 [actions-url]: https://github.com/kamikhaylov/arm_payments/actions/workflows/maven.yml
-[codecov-image]: https://codecov.io/gh/kamikhaylov/arm_payments/graph/badge.svg?token=
+[codecov-image]: https://codecov.io/gh/kamikhaylov/arm_payments/graph/badge.svg?token=cEv1LqJM45
 [codecov-url]: https://codecov.io/gh/kamikhaylov/arm_payments
