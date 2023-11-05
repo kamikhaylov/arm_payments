@@ -8,6 +8,7 @@ import static ru.payments.arm.parameters.Parameters.DETAILS_SERVICE_ENABLED;
 import static ru.payments.arm.parameters.Parameters.LIST_SERVICE_ENABLED;
 import static ru.payments.arm.parameters.Parameters.MERGE_TYPE_SERVICE_ENABLED;
 import static ru.payments.arm.parameters.Parameters.MONITORING_SERVICE_ENABLED;
+import static ru.payments.arm.parameters.Parameters.SING_UP_SERVICE_ENABLED;
 import static ru.payments.arm.parameters.Parameters.SYSTEM_JOURNAL_SERVICE_ENABLED;
 import static ru.payments.arm.parameters.Parameters.TYPE_LIST_SERVICE_ENABLED;
 
@@ -52,5 +53,10 @@ public class ParametersServiceImpl implements ParametersService {
     @Override
     public boolean isDeleteTypeServiceEnabled() {
         return parametersApi.getBooleanParameter(DELETE_TYPE_SERVICE_ENABLED.getName());
+    }
+
+    @Override
+    public boolean isSingUpServiceEnabled() {
+        return parametersApi.getBooleanParameter(SING_UP_SERVICE_ENABLED.getName());
     }
 }

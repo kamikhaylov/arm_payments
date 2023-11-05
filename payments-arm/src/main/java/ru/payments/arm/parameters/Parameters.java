@@ -16,7 +16,8 @@ public enum Parameters {
     SYSTEM_JOURNAL_SERVICE_ENABLED("payment.systemJournal.service.enabled"),
     TYPE_LIST_SERVICE_ENABLED("payment.type.list.service.enabled"),
     MERGE_TYPE_SERVICE_ENABLED("payment.type.merge.service.enabled"),
-    DELETE_TYPE_SERVICE_ENABLED("payment.type.delete.service.enabled");
+    DELETE_TYPE_SERVICE_ENABLED("payment.type.delete.service.enabled"),
+    SING_UP_SERVICE_ENABLED("payment.singUp.service.enabled");
 
     private final String name;
 }

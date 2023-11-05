@@ -25,4 +25,7 @@ public interface ParametersService {
 
     /** Возвращает признак включения сервиса удаления типа платежа */
     boolean isDeleteTypeServiceEnabled();
+
+    /** Возвращает признак включения сервиса регистрации пользователя */
+    boolean isSingUpServiceEnabled();
 }

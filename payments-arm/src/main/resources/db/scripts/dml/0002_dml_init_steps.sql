@@ -25,3 +25,8 @@ values ('payment.type.merge.service.enabled', 'java.lang.Boolean', 'Включе
 insert into parameters (name, java_type, description, parameter_value)
 values ('payment.type.delete.service.enabled', 'java.lang.Boolean', 'Включение/выключения сервиса удаления типа платежа', 'false');
 /
+
+-- changeset konstantin:0002_dml_initial_steps_#0005 logicalFilePath:path-independent runOnChange:true splitStatements:true endDelimiter:/
+insert into parameters (name, java_type, description, parameter_value)
+values ('payment.singUp.service.enabled', 'java.lang.Boolean', 'Включение/выключения сервиса регистрации пользователя', 'false');
+/
